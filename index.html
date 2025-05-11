@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en,si">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Vesak</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+        <video autoplay muted loop id="backgroundVideo"></video>
+            <source src="https://videos.pexels.com/video-files/10638148/10638148-uhd_2560_1440_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <style>
+            #backgroundVideo {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1;
+            }
+        </style>
+    <div class="form-container" id="form-container">
+        <h2>Enter your name to get a Vesak wish</h2>
+        <input type="text" id="nameInput" placeholder="Your Name" />
+        <br />
+        <button onclick="showCard()">Show</button>
+    </div>
+
+    <div class="card-container" id="card-container">
+        <div class="card" id="card" onclick="flipCard()">
+            <div class="side front">
+                <h1>වෙසක් සුභ පැතුම් !</h1>
+                <footer>
+                <p>from Pathum &copy; 2025</p>
+            </footer>
+            </div>
+            <div class="side back">
+                <img src="https://i.pinimg.com/736x/2b/27/6b/2b276b37a76dd254a74f529734234ae9.jpg" alt="Buddha" />
+                <h2>වෙසක් සුභ පැතුම් !</h2>
+                <p id="wishText">
+                    May peace and harmony light your path,
+                </p>
+                <br>
+                <span>to, <span id="name">Name</span></span>
+                <footer>
+                <p>from Pathum &copy; 2025</p>
+            </footer>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Lanterns dynamically added -->
+    <script src="wishes.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

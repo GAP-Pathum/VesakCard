@@ -1,0 +1,228 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: black;
+  overflow: hidden;
+}
+
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 20; /* Higher z-index to appear in front */
+  color: #444;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #d17f00;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffd700;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background-color: #ffc107;
+}
+
+.card-container {
+  perspective: 1000px;
+  height: 100vh;
+  width: 100vw;
+  display: none; /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card .side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+.card .front {
+  background-image: url('https://i.pinimg.com/736x/2e/2b/1a/2e2b1a252bdf1993a0ca1b11f179ab50.jpg');
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.card .back {
+  background: #fff8e1;
+  transform: rotateY(180deg);
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #444;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card .back h2 {
+  margin-top: 60px;
+  font-size: 24px;
+  color: #d17f00;
+  z-index: 50;
+}
+
+.card .back p {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.card .back img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px);
+  z-index: -1; /* Changed z-index to -1 to send backward */
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: rgb(186, 184, 184);
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+footer p {
+  margin: 0;
+}
+
+.lantern {
+  position: fixed;
+  width: 25px;
+  height: 35px;
+  background: radial-gradient(ellipse at center, #ffe066 0%, #ff8c00 100%);
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.9), 0 0 30px rgba(255, 200, 0, 0.7);
+  animation: floatLantern linear infinite;
+  opacity: 0.85;
+  z-index: 2;
+}
+
+.lantern::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #ffb700;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffb700;
+}
+
+.lantern::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 10px;
+  background: #cc6600;
+  border-radius: 2px;
+}
+
+@keyframes floatLantern {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(-10vw) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Responsive tweaks for all screen sizes */
+@media (max-width: 600px) {
+  .card {
+    width: 90vw;
+    height: 60vh;
+  }
+
+  .card .front,
+  .card .back {
+    font-size: 16px;
+  }
+
+  input[type="text"] {
+    width: 80%;
+  }
+
+  button {
+    width: 60%;
+  }
+
+  .card .back h2 {
+    font-size: 20px;
+    margin-top: 30px;
+  }
+
+  .card .back p {
+    font-size: 16px;
+  }
+}
